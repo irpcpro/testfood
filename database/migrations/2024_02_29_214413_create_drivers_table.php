@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
+        Schema::create('drivers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->string('address');
-            $table->float('lat');
-            $table->float('long');
+            $table->string('uid');
+            $table->string('name');
+            $table->bigInteger('plate');
             $table->timestamps();
-
-            $table->foreignId('user_id');
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('drivers');
     }
 };

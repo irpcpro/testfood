@@ -11,16 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
+        Schema::create('delay_reports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->string('address');
-            $table->float('lat');
-            $table->float('long');
+            $table->unsignedBigInteger('agent_id');
+            $table->integer('status'); // enum
+            $table->integer('estimate')->nullable();
+            $table->string('context');
             $table->timestamps();
 
-            $table->foreignId('user_id');
+            $table->foreignId('agent_id');
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('delay_reports');
     }
 };
