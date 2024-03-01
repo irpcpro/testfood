@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -27,4 +29,28 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+
+    protected function prepareJsonResponse($request, Throwable $e)
+    {
+        if(!isset($this->convertExceptionToArray($e)['message']) || $this->convertExceptionToArray($e)['message'] == ""){
+            if($e instanceof AccessDeniedHttpException){
+                $message = "user can't authorize to this request.";
+            }else{
+                $message = "something went wrong.";
+            }
+        }else{
+            $message = $this->convertExceptionToArray($e)['message'];
+        }
+        $error_code = $this->isHttpException($e) ? $e->getStatusCode() : 500;
+        $getResponse = APIResponse($message, $error_code, false)->get();
+        return new JsonResponse(
+            $getResponse->original,
+            $error_code,
+            $this->isHttpException($e) ? $e->getHeaders() : [],
+            JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
+        );
+    }
+
+
 }
