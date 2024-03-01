@@ -18,8 +18,6 @@ return new class extends Migration
             $table->integer('estimate')->nullable();
             $table->string('context');
             $table->timestamps();
-
-            $table->foreignId('agent_id');
         });
     }
 

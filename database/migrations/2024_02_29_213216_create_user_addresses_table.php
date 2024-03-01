@@ -19,8 +19,6 @@ return new class extends Migration
             $table->float('lat');
             $table->float('long');
             $table->timestamps();
-
-            $table->foreignId('user_id');
         });
     }
 

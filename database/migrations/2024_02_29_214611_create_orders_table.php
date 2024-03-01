@@ -18,10 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_address_id');
             $table->integer('delivery_time');
             $table->timestamps();
-
-            $table->foreignId('user_id');
-            $table->foreignId('vendor_id');
-            $table->foreignId('user_address_id');
         });
     }
 

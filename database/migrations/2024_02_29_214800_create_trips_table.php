@@ -17,9 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->integer('status'); // enum
             $table->timestamps();
-
-            $table->foreignId('driver_id');
-            $table->foreignId('order_id');
         });
     }
 
