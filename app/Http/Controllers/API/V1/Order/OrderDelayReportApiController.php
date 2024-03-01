@@ -23,7 +23,7 @@ class OrderDelayReportApiController extends Controller
             TripStatusEnum::picked->value,
         ];
 
-        $orderDelayController = new OrderDelayController();
+        $orderDelayController = new OrderDelayController($order);
 
         // check conditions
         if ($order->trip()->exists()) {
