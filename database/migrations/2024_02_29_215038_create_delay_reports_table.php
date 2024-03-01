@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('delay_reports', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('order_id');
             $table->integer('status'); // enum
+            $table->unsignedBigInteger('agent_id')->nullable();
             $table->integer('estimate')->nullable();
-            $table->string('context');
+            $table->string('context')->nullable();
             $table->timestamps();
         });
     }

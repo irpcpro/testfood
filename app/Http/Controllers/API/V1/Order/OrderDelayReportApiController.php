@@ -18,33 +18,37 @@ class OrderDelayReportApiController extends Controller
         // get the order
         $order = Order::find($request->validated('order_id'));
 
+        // check if order delivery time hasn't passed yet
+        $orderController = new OrderController();
+        if(!$orderController->deliveryTimeHasPassed($order))
+            APIResponse('the order has still time to be delivered.', 422, false)->send();
+
         // specific status
         $specificStatus = [
             TripStatusEnum::assigned->value,
             TripStatusEnum::at_vendor->value,
             TripStatusEnum::picked->value,
         ];
-
-        // check if order delivery time hasn't passed yet
-        $orderController = new OrderController();
-        if(!$orderController->deliveryTimeHasPassed($order))
-            APIResponse('the order has still time to be delivered.', 422, false)->send();
-
         $orderDelayController = new OrderDelayController($order);
 
-        // check conditions
+        /*
+         * Check Conditions [ trip->exists && in_array(status, $specificStatus) ]
+         * */
         if ($order->trip()->exists()) {
             if (in_array($order->trip->status->value, $specificStatus)) {
                 // step 1 - get new estimate
-                $orderDelayController->newEstimate();
-            } else {
-                // step 2 - move order delaying
-
+                $out = $orderDelayController->newEstimate();
+                // return response and exit
+                APIResponse($out['message'], $out['status']? 200 : 422, $out['status'])->send();
             }
-        } else {
-            // step 2 - move order delaying
-
         }
+
+        /*
+         * Other Conditions [ !(trip->exists) || (trip->exists && !in_array(status, $specificStatus)) ]
+         * */
+        $orderDelayController->moveOrderToDelayQueue();
+        // return response and exit
+        APIResponse('Your report has been registered. Our agents will contact you. Thank you for your patience', 200, true)->send();
     }
 
 }

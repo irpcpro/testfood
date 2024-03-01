@@ -26,6 +26,7 @@ user_id
 vendor_id
 user_address_id
 delivery_time (minutes)
+delivery_time_update (datetime)
 created_at - updated_at
 
 trips =
@@ -48,6 +49,7 @@ created_at - updated_at
 delay_reports =
 id
 agent_id [nullable]
+order_id
 status [pending | assigned | solved]
 estimate (minutes) [nullable]
 context

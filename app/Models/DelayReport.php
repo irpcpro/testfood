@@ -12,6 +12,7 @@ class DelayReport extends Model
 
     protected $fillable = [
         'agent_id',
+        'order_id',
         'status',
         'estimate',
         'context',
