@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Order;
 
+use App\Rules\UserAddressBelongsToCurrentUserRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class OrderCreateRequest extends FormRequest
@@ -18,7 +19,7 @@ class OrderCreateRequest extends FormRequest
     {
         return [
             'vendor_id' => ['required', 'exists:vendors,id'],
-            "user_address_id" => ['required', "exists:user_addresses,id"],
+            "user_address_id" => ['required', "exists:user_addresses,id", new UserAddressBelongsToCurrentUserRule],
         ];
     }
 
