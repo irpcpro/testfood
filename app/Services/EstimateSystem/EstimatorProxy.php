@@ -23,6 +23,8 @@ class EstimatorProxy implements Estimator
         return $result['status']? $result : $this->backupEstimator();
     }
 
+
+
     /**
      * mock response when server is down
      * */
@@ -30,7 +32,7 @@ class EstimatorProxy implements Estimator
     private function backupEstimator(bool $setCache = true): array
     {
         if($setCache)
-            Cache::set(CACHE_ESTIMATOR_DOWN, Carbon::now());
+            Cache::set(CACHE_ESTIMATOR_DOWN_KEY, Carbon::now());
 
         return [
             'data' => [
@@ -46,7 +48,7 @@ class EstimatorProxy implements Estimator
      * */
     private function checkIsEstimatorDown(): bool
     {
-        $get = Cache::get(CACHE_ESTIMATOR_DOWN);
+        $get = Cache::get(CACHE_ESTIMATOR_DOWN_KEY);
         if($get && !Carbon::now()->isAfter(Carbon::parse($get)->addSeconds(CACHE_ESTIMATOR_TRY_SECONDS)))
             return true;
 
