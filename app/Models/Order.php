@@ -19,7 +19,7 @@ class Order extends Model
     ];
 
     protected $appends = [
-        'has_trip'
+        'is_on_trip'
     ];
 
     public function vendor(): HasOne
@@ -37,7 +37,7 @@ class Order extends Model
         return $this->hasOne(Trip::class, 'order_id', 'id');
     }
 
-    public function getHasTripAttribute()
+    public function getIsOnTripAttribute(): bool
     {
         if($this->trip)
             return $this->trip->on_trip;

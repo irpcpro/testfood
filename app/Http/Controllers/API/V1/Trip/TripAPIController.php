@@ -20,7 +20,7 @@ class TripAPIController extends Controller
         $order = Order::find($order_id);
 
         // order controller
-        if($order->has_trip)
+        if($order->is_on_trip)
             APIResponse('Order has already driver.', 200, false)->send();
 
         // request for trip
