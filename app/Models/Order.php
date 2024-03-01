@@ -16,10 +16,15 @@ class Order extends Model
         'vendor_id',
         'user_address_id',
         'delivery_time',
+        'delivery_time_update'
     ];
 
     protected $appends = [
         'is_on_trip'
+    ];
+
+    protected $casts = [
+        'delivery_time_update' => 'datetime'
     ];
 
     public function vendor(): HasOne

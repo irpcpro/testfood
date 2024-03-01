@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('vendor_id');
             $table->unsignedBigInteger('user_address_id');
             $table->integer('delivery_time');
+            $table->timestamp('delivery_time_update');
             $table->timestamps();
         });
     }

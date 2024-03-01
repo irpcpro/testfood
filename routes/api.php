@@ -25,7 +25,7 @@ Route::namespace('V1')->prefix('v1')->group(function () {
     // third-party service [instead of https://run.mocky.io/v3/122c2796-5df4-461c-ab75-87c1192b17f7]
     Route::get('/estimator', function(){
         return [
-            'data' => [ 'time' => rand(5,10) ]
+            'data' => [ 'time' => rand(4,7) ]
         ];
     });
 });
