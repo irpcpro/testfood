@@ -16,7 +16,6 @@ class OrderAPIController extends Controller
 
     public function create(OrderCreateRequest $request)
     {
-
         // get the models
         $vendor = Vendor::find($request->validated('vendor_id'));
         $user_address = UserAddress::find($request->validated('user_address_id'));

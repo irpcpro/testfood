@@ -18,6 +18,10 @@ class Order extends Model
         'delivery_time',
     ];
 
+    protected $appends = [
+        'has_trip'
+    ];
+
     public function vendor(): HasOne
     {
         return $this->hasOne(Vendor::class, 'id', 'vendor_id');
@@ -31,6 +35,14 @@ class Order extends Model
     public function trip(): HasOne
     {
         return $this->hasOne(Trip::class, 'order_id', 'id');
+    }
+
+    public function getHasTripAttribute()
+    {
+        if($this->trip)
+            return $this->trip->on_trip;
+
+        return false;
     }
 
 }
