@@ -39,7 +39,7 @@ class OrderDelayReportApiController extends Controller
                 // step 1 - get new estimate
                 $out = $orderDelayController->newEstimate();
                 // return response and exit
-                APIResponse($out['message'], $out['status']? 200 : 422, $out['status'])->send();
+                APIResponse($out['message'], $out['status']? 200 : 422, $out['status'])->setData($out['data'])->send();
             }
         }
 

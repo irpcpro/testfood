@@ -4,9 +4,8 @@ namespace App\Http\Controllers\System\Order;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\System\DelayReport\DelayReportController;
-use App\Http\Helpers\Facade\APIResponse;
 use App\Models\Order;
-use App\Services\EstimateSystem\Estimator;
+use App\Services\EstimateSystem\EstimatorProxy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use JetBrains\PhpStorm\ArrayShape;
@@ -30,7 +29,7 @@ class OrderDelayController extends Controller
     public function newEstimate(): array
     {
         // try to get new estimate time
-        $estimator = new Estimator();
+        $estimator = new EstimatorProxy();
         $newTime = $estimator->getNewEstimate();
 
         // if new estimate time available
@@ -56,7 +55,7 @@ class OrderDelayController extends Controller
 
             return [
                 'status' => true,
-                'message' => "the new estimate has set. Sorry for delay. the new estimate is about $getTime",
+                'message' => "the new estimate has set. Sorry for delay. the new estimate is about $getTime minutes",
                 'data' => [
                     'time' => $getTime
                 ]

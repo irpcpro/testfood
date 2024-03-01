@@ -9,3 +9,6 @@ if(!function_exists('APIResponse')){
     }
 }
 
+function randomDeliveryTime(){
+    return rand(4,7);
+}

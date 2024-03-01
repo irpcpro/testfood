@@ -20,7 +20,7 @@ class Vendor extends Model
      * */
     public function deliveryTime(): int
     {
-        return rand(5, 10);
+        return randomDeliveryTime();
     }
 
 }
