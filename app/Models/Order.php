@@ -28,4 +28,9 @@ class Order extends Model
         return $this->hasOne(User::class, 'id', 'user_id');
     }
 
+    public function trip(): HasOne
+    {
+        return $this->hasOne(Trip::class, 'order_id', 'id');
+    }
+
 }

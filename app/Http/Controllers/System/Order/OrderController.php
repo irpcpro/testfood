@@ -29,4 +29,13 @@ class OrderController extends Controller
         return $model;
     }
 
+
+    public function hasDriver(Order $order)
+    {
+        if($order->trip)
+            return $order->trip->on_trip;
+
+        return false;
+    }
+
 }

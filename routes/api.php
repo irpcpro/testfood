@@ -16,5 +16,13 @@ Route::namespace('V1')->prefix('v1')->group(function () {
     });
 
 
+    Route::prefix('trip')
+        ->namespace('Trip')
+        ->controller('TripAPIController')
+        ->group(function(){
+            // request driver for order
+            Route::post('/request', 'request');
+    });
+
 
 });
