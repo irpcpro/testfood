@@ -30,6 +30,8 @@ class DelayReportFactory extends Factory
                 'order_id' => $order->id,
                 'status' => DelayReportStatusEnum::SOLVED->value,
                 'estimate' => randomDeliveryTime(),
+                'created_at' => $order->created_at,
+                'updated_at' => $order->updated_at,
             ];
         }else{
             if($rand()){
@@ -44,6 +46,8 @@ class DelayReportFactory extends Factory
                 'agent_id' => $agent,
                 'order_id' => $order->id,
                 'status' => $status,
+                'created_at' => $order->created_at,
+                'updated_at' => $order->updated_at,
             ];
         }
 

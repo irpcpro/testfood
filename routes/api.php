@@ -31,10 +31,10 @@ Route::namespace('V1')->prefix('v1')->group(function () {
         Route::post('/assign_task/{agent}', 'assignTask');
     });
 
-    // vendor
-    Route::prefix('vendor/{vendor}')->namespace('Vendor')->controller('ReportAPIController')->group(function(){
-        // reports
-        Route::prefix('reports')->controller('VendorReportController')->group(function(){
+    // report
+    Route::prefix('reports')->namespace('Report')->controller('ReportAPIController')->group(function(){
+        // vendors
+        Route::prefix('vendors')->controller('ReportVendorController')->group(function(){
             Route::prefix('delays')->group(function(){
                 Route::get('/weekly', 'weeklyDelays');
             });

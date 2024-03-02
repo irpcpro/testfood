@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vendor extends Model
 {
@@ -21,6 +22,11 @@ class Vendor extends Model
     public function deliveryTime(): int
     {
         return randomDeliveryTime();
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class, 'vendor_id', 'id');
     }
 
 }

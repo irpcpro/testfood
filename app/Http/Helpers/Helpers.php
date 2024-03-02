@@ -16,10 +16,10 @@ function randomDeliveryTime(): int {
     return rand(4,7);
 }
 
-#[ArrayShape(['start' => "\Illuminate\Support\Carbon", 'end' => "\Illuminate\Support\Carbon"])]
+#[ArrayShape(['start' => "string", 'end' => "string"])]
 function getLastWeekDates(): array {
     return [
-        'start' => Carbon::now()->startOfWeek()->subweek(),
-        'end' => Carbon::now()->endOfWeek()->subWeek(),
+        'start' => Carbon::now()->startOfWeek()->subweek()->format('Y-m-d H:i:s'),
+        'end' => Carbon::now()->endOfWeek()->subWeek()->format('Y-m-d H:i:s'),
     ];
 }

@@ -14,8 +14,8 @@ class ReportDataSeeder extends Seeder
     public function run(): void
     {
 
-        Order::factory(100)->create();
-        DelayReport::factory(100)->create();
+        Order::factory(300)->create();
+        DelayReport::factory(300)->create();
 
     }
 }
