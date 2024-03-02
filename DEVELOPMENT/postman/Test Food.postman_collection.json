@@ -138,7 +138,26 @@
 								"type": "text"
 							}
 						],
-						"url": "{{base_url}}/api/v1/reports/vendors/delays/weekly"
+						"url": {
+							"raw": "{{base_url}}/api/v1/reports/vendors/delays/weekly?cache=false",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"vendors",
+								"delays",
+								"weekly"
+							],
+							"query": [
+								{
+									"key": "cache",
+									"value": "false"
+								}
+							]
+						}
 					},
 					"response": []
 				}

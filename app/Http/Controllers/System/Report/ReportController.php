@@ -15,11 +15,11 @@ class ReportController extends Controller
 {
 
     #[ArrayShape(['data' => "array", 'status' => "bool", 'message' => "string"])]
-    public function vendorWeeklyDelays(): array
+    public function vendorWeeklyDelays(bool $cache = true): array
     {
         // firstly get data from cache
         $getCache = $this->getReportFromCache();
-        if($getCache != null)
+        if($getCache != null && $cache)
             return $getCache;
 
         // get the time span
