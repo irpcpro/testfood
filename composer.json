@@ -3,7 +3,7 @@
     "type": "project",
     "description": "A project to get order and manage them.",
     "keywords": ["testfood", "test"],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "authors": [
         {
