@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\System\Order;
 
+use App\Enums\DelayReportStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\System\DelayReport\DelayReportController;
 use App\Models\Order;
@@ -21,6 +22,15 @@ class OrderDelayController extends Controller
         //
     }
 
+    public function orderHasActiveReport()
+    {
+        return $this->order->whereHas('delayReports', function($query){
+            $query->whereIn('status', [
+                DelayReportStatusEnum::PENDING->value,
+                DelayReportStatusEnum::ASSIGNED->value
+            ]);
+        })->exists();
+    }
 
     /**
      * get new estimate (delivery time) for order

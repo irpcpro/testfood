@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "1aa705bc-249c-492d-b759-165a802d14e8",
+		"name": "Test Food",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "4984709"
+	},
+	"item": [
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Place Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vendor_id\": 2,\r\n    \"user_address_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/v1/order"
+					},
+					"response": []
+				},
+				{
+					"name": "Delay Report",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": 1\r\n}"
+						},
+						"url": "{{base_url}}/api/v1/order/delay_report"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Trip for Order",
+			"item": [
+				{
+					"name": "Get Driver For Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"order_id\": 1\r\n}"
+						},
+						"url": "{{base_url}}/api/v1/trip/request"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

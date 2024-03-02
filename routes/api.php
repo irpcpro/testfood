@@ -20,4 +20,11 @@ Route::namespace('V1')->prefix('v1')->group(function () {
             Route::post('/request', 'request');
     });
 
+    // agents
+//    Route::prefix('agent')->namespace('Agent')->group(function(){
+        // request to assign delay_report to agent
+//        Route::post('');
+
+//    });
+
 });

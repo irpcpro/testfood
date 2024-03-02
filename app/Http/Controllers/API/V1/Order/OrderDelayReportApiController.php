@@ -31,6 +31,10 @@ class OrderDelayReportApiController extends Controller
         ];
         $orderDelayController = new OrderDelayController($order);
 
+        // check if order has active delay report
+        if($orderDelayController->orderHasActiveReport())
+            APIResponse('Sorry, you have already reported. Please wait until our agents call you.', 422, false)->send();
+
         /*
          * Check Conditions [ trip->exists && in_array(status, $specificStatus) ]
          * */

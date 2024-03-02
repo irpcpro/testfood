@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
@@ -40,6 +41,11 @@ class Order extends Model
     public function trip(): HasOne
     {
         return $this->hasOne(Trip::class, 'order_id', 'id');
+    }
+
+    public function delayReports(): HasMany
+    {
+        return $this->hasMany(DelayReport::class, 'order_id', 'id');
     }
 
     public function getIsOnTripAttribute(): bool
