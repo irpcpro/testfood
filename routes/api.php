@@ -21,10 +21,14 @@ Route::namespace('V1')->prefix('v1')->group(function () {
     });
 
     // agents
-//    Route::prefix('agent')->namespace('Agent')->group(function(){
-        // request to assign delay_report to agent
-//        Route::post('');
-
-//    });
+    Route::prefix('agent')->namespace('Agent')->controller('AgentAPIController')->group(function(){
+        /*
+         * request to assign delay_report to agent
+         *
+         * in here, because we don't have any authorization, for mock data we pass the agent_id through the api query param
+         * */
+        // Route::post('/assign_task', 'assignTask');
+        Route::post('/assign_task/{agent}', 'assignTask');
+    });
 
 });

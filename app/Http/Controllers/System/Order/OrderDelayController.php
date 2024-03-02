@@ -24,12 +24,10 @@ class OrderDelayController extends Controller
 
     public function orderHasActiveReport()
     {
-        return $this->order->whereHas('delayReports', function($query){
-            $query->whereIn('status', [
-                DelayReportStatusEnum::PENDING->value,
-                DelayReportStatusEnum::ASSIGNED->value
-            ]);
-        })->exists();
+        return $this->order->delayReports()->whereIn('status', [
+            DelayReportStatusEnum::PENDING->value,
+            DelayReportStatusEnum::ASSIGNED->value
+        ])->exists();
     }
 
     /**
