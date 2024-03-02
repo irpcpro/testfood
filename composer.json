@@ -1,9 +1,16 @@
 {
     "name": "irpcpro/test-food",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
+    "description": "A project to get order and manage them.",
+    "keywords": ["testfood", "test"],
+    "version": "1.0.0",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "IRPCPRO",
+            "email": "irpcpro@yahoo.com"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
