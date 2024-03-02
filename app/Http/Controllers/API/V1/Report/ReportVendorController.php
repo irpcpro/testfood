@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API\V1\Report;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\System\Report\ReportController;
-use App\Http\Helpers\Facade\APIResponse;
 
 class ReportVendorController extends Controller
 {
