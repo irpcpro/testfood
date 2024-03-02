@@ -8,7 +8,7 @@
 
 <h2>System Design</h2>
 
-![TestFood](./DEVELOPMENT/system%20design/system-design.png)
+![Test-Food](./DEVELOPMENT/system%20design/system-design.png)
 
 
 <h2>Installation</h2>
@@ -16,7 +16,7 @@
 
 Install this project via Composer:
 ```
-composer create-project irpcpro/testfood
+composer create-project irpcpro/test-food
 ```
 <br/>
 <h6>Requires:</h6>
