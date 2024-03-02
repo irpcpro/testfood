@@ -5,6 +5,7 @@
 
 <p>A project to get order and manage them ...</p>
 
+[![Latest Stable Version](http://poser.pugx.org/irpcpro/test-food/v)](https://packagist.org/packages/irpcpro/test-food) [![Total Downloads](http://poser.pugx.org/irpcpro/test-food/downloads)](https://packagist.org/packages/irpcpro/test-food) [![Latest Unstable Version](http://poser.pugx.org/irpcpro/test-food/v/unstable)](https://packagist.org/packages/irpcpro/test-food) [![License](http://poser.pugx.org/irpcpro/test-food/license)](https://packagist.org/packages/irpcpro/test-food) [![PHP Version Require](http://poser.pugx.org/irpcpro/test-food/require/php)](https://packagist.org/packages/irpcpro/test-food)
 
 <h2>System Design</h2>
 
